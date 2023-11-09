@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cakoyymkjrdqy"]
+[gd_scene load_steps=8 format=3 uid="uid://cakoyymkjrdqy"]
 
 [ext_resource type="MeshLibrary" uid="uid://ce4pe6vesmmk3" path="res://MeshLibraries/SpaceLibrary.tres" id="1_kudj5"]
+[ext_resource type="PackedScene" uid="uid://c4ngyn6cjh85c" path="res://enemy.tscn" id="2_s3p60"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_csq32"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -40,7 +41,7 @@ size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_d010j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 15)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_kudj5")
@@ -91,3 +92,6 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("2_s3p60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 33)

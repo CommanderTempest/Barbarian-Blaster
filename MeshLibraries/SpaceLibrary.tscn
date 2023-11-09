@@ -10,14 +10,14 @@ size = Vector3(4, 0.1, 4)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sogud"]
 data = PackedVector3Array(-2, 0.05, 2, 2, 0.05, 2, -2, -0.05, 2, 2, 0.05, 2, 2, -0.05, 2, -2, -0.05, 2, 2, 0.05, -2, -2, 0.05, -2, 2, -0.05, -2, -2, 0.05, -2, -2, -0.05, -2, 2, -0.05, -2, 2, 0.05, 2, 2, 0.05, -2, 2, -0.05, 2, 2, 0.05, -2, 2, -0.05, -2, 2, -0.05, 2, -2, 0.05, -2, -2, 0.05, 2, -2, -0.05, -2, -2, 0.05, 2, -2, -0.05, 2, -2, -0.05, -2, 2, 0.05, 2, -2, 0.05, 2, 2, 0.05, -2, -2, 0.05, 2, -2, 0.05, -2, 2, 0.05, -2, -2, -0.05, 2, 2, -0.05, 2, -2, -0.05, -2, 2, -0.05, 2, 2, -0.05, -2, -2, -0.05, -2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3hpa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78d10"]
 albedo_color = Color(0.694118, 0.694118, 0.694118, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_oiplf"]
-material = SubResource("StandardMaterial3D_h3hpa")
+material = SubResource("StandardMaterial3D_78d10")
 size = Vector3(4, 0.1, 4)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kmcd4"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mtvyh"]
 data = PackedVector3Array(-2, 0.05, 2, 2, 0.05, 2, -2, -0.05, 2, 2, 0.05, 2, 2, -0.05, 2, -2, -0.05, 2, 2, 0.05, -2, -2, 0.05, -2, 2, -0.05, -2, -2, 0.05, -2, -2, -0.05, -2, 2, -0.05, -2, 2, 0.05, 2, 2, 0.05, -2, 2, -0.05, 2, 2, 0.05, -2, 2, -0.05, -2, 2, -0.05, 2, -2, 0.05, -2, -2, 0.05, 2, -2, -0.05, -2, -2, 0.05, 2, -2, -0.05, 2, -2, -0.05, -2, 2, 0.05, 2, -2, 0.05, 2, 2, 0.05, -2, -2, 0.05, 2, -2, 0.05, -2, 2, 0.05, -2, -2, -0.05, 2, 2, -0.05, 2, -2, -0.05, -2, 2, -0.05, 2, 2, -0.05, -2, -2, -0.05, -2)
 
 [node name="SpaceLibrary" type="Node3D"]
@@ -36,4 +36,4 @@ mesh = SubResource("BoxMesh_oiplf")
 [node name="StaticBody3D" type="StaticBody3D" parent="TurretBase"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TurretBase/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_kmcd4")
+shape = SubResource("ConcavePolygonShape3D_mtvyh")
