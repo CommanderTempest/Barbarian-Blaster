@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cakoyymkjrdqy"]
+[gd_scene load_steps=7 format=3 uid="uid://cakoyymkjrdqy"]
+
+[ext_resource type="MeshLibrary" uid="uid://ce4pe6vesmmk3" path="res://MeshLibraries/SpaceLibrary.tres" id="1_kudj5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_csq32"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,6 +15,16 @@ sky = SubResource("Sky_sno4b")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d010j"]
+albedo_color = Color(0.584314, 0.584314, 0.584314, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_m8j7d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0, 33, -0.371022, 0, 1.98677, 0.371022, 0, -1.98677, -10, 0, 22, -0.882658, 0, 1.30631, 0.882658, 0, -1.30631, 18, 0, 22, 0.750467, 0, 1.47193, -0.750467, 0, -1.47193, 18, 0, 14, 0.664447, 0, 1.1317, -0.664447, 0, -1.1317, -14, 0, 14, -0.968678, 0, 0.684899, 0.968678, 0, -0.684899, -14, 0, 6, -1.01875, 0, 0.88904, 1.01875, 0, -0.88904, 18, 0, 6, 0.614374, 0, 1.05466, -0.614374, 0, -1.05466, 18, 0, -2, 0.936633, 0, 0.918569, -0.936633, 0, -0.918569, -14, 0, -2, 0, 0, 0, 0, 0, 0, -14, 0, -6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -25,6 +37,57 @@ shadow_enabled = true
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(100, 2, 100)
+material = SubResource("StandardMaterial3D_d010j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_kudj5")
+cell_size = Vector3(4, 4, 4)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65534, 131072, 65535, 7, 131072, 65531, 0, 131072, 2, 7, 131072, 5, 5, 131072, 5, 6, 131072, 4, 7, 131072, 5, 7, 131072, 3, 7, 131072, 3, 65534, 131072, 4, 65534, 131072, 5, 65534, 131072, 5, 65535, 131072, 5, 0, 131072, 5, 1, 131072, 5, 2, 131072, 5, 3, 131072, 5, 4, 131072, 2, 65534, 131072, 1, 65534, 131072, 0, 65534, 131072, 65534, 65534, 131072, 65533, 65534, 131072, 65531, 65534, 131072, 65531, 65535, 131072, 1, 7, 131072, 0, 7, 131072, 65534, 7, 131072, 65532, 7, 131072, 65531, 7, 131072, 65531, 6, 131072, 65531, 5, 131072, 65531, 4, 131072, 65531, 3, 131072, 65531, 2, 131072, 65531, 1, 131072, 65532, 0, 131072, 65533, 0, 131072, 65534, 0, 131072, 65535, 0, 131072, 0, 0, 131072, 1, 0, 131072, 2, 0, 131072, 3, 0, 131072, 3, 2, 131072, 2, 2, 131072, 1, 2, 131072, 0, 2, 131072, 65535, 2, 131072, 65534, 2, 131072, 65533, 2, 131072, 65532, 4, 131072, 65533, 4, 131072, 65534, 4, 131072, 65535, 4, 131072, 0, 4, 131072, 1, 4, 131072, 2, 4, 131072, 3, 4, 131072, 4, 2, 131072, 4, 6, 131072, 3, 6, 131072, 2, 6, 131072, 1, 6, 131072, 0, 6, 131072, 65535, 6, 131072, 65534, 6, 131072, 65532, 6, 131072, 65532, 5, 131072)
+}
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_m8j7d")
+
+[node name="Road" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(-1, 0.1, -1, 0.1, 1, 0.1, 1, 0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="RoadLeftEdge" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(-1.1, 0.1, -1.1, 0.15, -0.9, 0.15, -0.9, 0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="RoadRightEdge" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(0.9, 0, 0.9, 0.15, 1.1, 0.15, 1.1, 0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
