@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cts8ag5bgaupb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tj63"]
+albedo_color = Color(0.611765, 0.207843, 0, 1)
+
+[node name="Base" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.85)
+radius = 2.0
+height = 4.0
+sides = 32
+material = SubResource("StandardMaterial3D_5tj63")
