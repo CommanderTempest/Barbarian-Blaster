@@ -19,8 +19,13 @@ var current_hp: int:
 
 func _ready():
 	current_hp = max_health
+	#Game runs twice as fast:
+	#Engine.time_scale = 2
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	progress += (delta * speed)
 	if (progress_ratio == 1.0):
 		target.take_damage()
+		set_process(false)
+		queue_free()
